@@ -1,0 +1,18 @@
+# Build output. Releases are built in the private monorepo; nothing built here
+# belongs in the repository.
+/lazurite
+*.rpm
+*.tar.gz
+
+# Go
+coverage.out
+*.test
+*.out
+
+# The export's own marker
+.lazurite-export
+
+# Editors
+.idea/
+.vscode/
+*.swp
