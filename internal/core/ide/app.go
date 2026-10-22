@@ -4,8 +4,8 @@ import (
 	"context"
 	"unicode"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ui"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/ui"
 )
 
 // What the status line says while the language server loads a project,

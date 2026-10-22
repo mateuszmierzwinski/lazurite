@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 	"github.com/mateuszmierzwinski/lazurite/test/stack"
 )
 
@@ -125,11 +125,17 @@ func TestSteppingFromNothingStopsAtTheStartOfMainAndStopEndsTheProgram(t *testin
 	s.Press(term.KeyF8).Awaits("Call stack", patience)
 }
 
+// completedPrintln is fmt.Println in the completion list, found by its name
+// alone: gopls words the detail beside it differently from one version to the
+// next ("func(a ...any) …" in older ones, "(a ...any) …" in v0.24), and that
+// wording is gopls's, shown as it comes.
+const completedPrintln = "Println  "
+
 func TestTheLanguageServerCompletesReportsAndFindsDefinitions(t *testing.T) {
 	stack.NeedsGo(t)
 	s := stack.Start(t, project(), stack.Options{Gopls: stack.NeedsGopls(t)}).Open("main.go")
 	s.GoTo("13").Press(term.KeyEnd, term.KeyEnter).Type("fmt.Pr")
-	s.Awaits("Println  func(a ...any)", patience)
+	s.Awaits(completedPrintln, patience)
 	s.Press(term.KeyDown, term.KeyDown, term.KeyEnter).Sees("    fmt.Println")
 	s.Type("(notDeclared)").Alt('m').Awaits("undefined: notDeclared", patience)
 	s.Press(term.KeyEnter).Sees("╚═ 14:14 ═")
@@ -182,7 +188,7 @@ func TestANewFileIsCompletedBeforeItIsEverSaved(t *testing.T) {
 	s := stack.Start(t, project(), stack.Options{Gopls: stack.NeedsGopls(t)})
 	s.Ctrl('n').Type("package main").Press(term.KeyEnter, term.KeyEnter).Type("import \"fmt\"").Press(term.KeyEnter, term.KeyEnter)
 	s.Type("func extra() {").Press(term.KeyEnter).Type("fmt.Pr")
-	s.Awaits("Println  func(a ...any)", patience)
+	s.Awaits(completedPrintln, patience)
 }
 
 // TestAModuleItsGoWorkLeavesOutIsStillBuiltAndCompleted — the whole Go
@@ -202,7 +208,7 @@ func TestAModuleItsGoWorkLeavesOutIsStillBuiltAndCompleted(t *testing.T) {
 	s := stack.Start(t, files, stack.Options{Sub: "app", Gopls: stack.NeedsGopls(t)}).Open("main.go")
 	s.Sees("╚═ go · GOWORK=off ═")
 	s.Press(term.KeyF9).Awaits("Build succeeded", patience)
-	s.GoTo("13").Press(term.KeyEnd, term.KeyEnter).Type("fmt.Pr").Awaits("Println  func(a ...any)", patience)
+	s.GoTo("13").Press(term.KeyEnd, term.KeyEnter).Type("fmt.Pr").Awaits(completedPrintln, patience)
 	s.Press(term.KeyDown, term.KeyDown, term.KeyEnter).Type(`("completed")`)
 	s.App.Do("work.add")
 	s.Sees("Added to", "╚═ go ═")

@@ -4,9 +4,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
 	"github.com/mateuszmierzwinski/lazurite/internal/core/ide"
 	"github.com/mateuszmierzwinski/lazurite/internal/langkit/language"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
 )
 
 // The two ways of counting a column. The editor counts runes; the protocol

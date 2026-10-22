@@ -3,7 +3,7 @@ package ui
 import (
 	"unicode"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // What each key does to each widget, as tables: one row per key, and the

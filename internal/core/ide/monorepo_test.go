@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
 	"github.com/mateuszmierzwinski/lazurite/internal/monokit/bazeltarget"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 const (

@@ -3,10 +3,10 @@ package ide
 import (
 	"context"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ui"
 	"github.com/mateuszmierzwinski/lazurite/internal/debugkit/debug"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/ui"
 )
 
 // Everything the IDE can be asked to do, by name. A menu item and a key

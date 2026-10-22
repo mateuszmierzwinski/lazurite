@@ -1,4 +1,4 @@
-// Package term is the terminal as Lazurite sees it: a grid of coloured
+// Package term is the terminal as a text-mode program sees it: a grid of coloured
 // cells to draw on, the bytes that make a real terminal show it, and the
 // keys and mouse a real terminal sends back.
 //

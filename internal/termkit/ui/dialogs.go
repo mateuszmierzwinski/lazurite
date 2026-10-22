@@ -4,7 +4,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // Message is a box of text with one way out.

@@ -5,9 +5,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ui"
 	"github.com/mateuszmierzwinski/lazurite/internal/monokit/bazeltarget"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/ui"
 )
 
 // The project: its files as a tree at the left of the desktop, moving the

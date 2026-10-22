@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ui"
 	"github.com/mateuszmierzwinski/lazurite/internal/monokit/bazeltarget"
 	"github.com/mateuszmierzwinski/lazurite/internal/monokit/buildkind"
 	"github.com/mateuszmierzwinski/lazurite/internal/monokit/gowork"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/ui"
 )
 
 // Working inside a monorepo: finding out what builds the project and how it

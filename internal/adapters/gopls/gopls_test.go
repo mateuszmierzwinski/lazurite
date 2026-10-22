@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
 	"github.com/mateuszmierzwinski/lazurite/internal/core/ide"
 	"github.com/mateuszmierzwinski/lazurite/internal/langkit/language"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
 )
 
 // fakeClient is a language server that answers what a test tells it to.

@@ -4,9 +4,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ui"
 	"github.com/mateuszmierzwinski/lazurite/internal/langkit/lexer"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/ui"
 )
 
 // How the IDE is drawn: the whole picture every time, of which only what

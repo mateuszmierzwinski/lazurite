@@ -1,6 +1,6 @@
 package ui
 
-import "github.com/mateuszmierzwinski/lazurite/internal/core/term"
+import "github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 
 // Dialog is anything shown over the desktop that takes the keyboard until it
 // is answered.

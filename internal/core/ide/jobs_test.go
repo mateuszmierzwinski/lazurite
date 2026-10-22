@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 func TestBuildSavesRunsTheGoToolAndShowsWhatItPrints(t *testing.T) {

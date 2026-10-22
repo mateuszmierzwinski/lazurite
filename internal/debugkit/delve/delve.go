@@ -24,7 +24,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -73,10 +72,10 @@ type Client struct {
 	nextRef int
 
 	// waits and captured are the two ways a client can differ (options.go),
-	// and streams is what a captured session is reading the program through.
+	// and streams are the pipes a captured session is reading the program through.
 	waits    bool
 	captured bool
-	streams  []io.ReadCloser
+	streams  []string
 }
 
 // New builds a client that reports to a watcher.

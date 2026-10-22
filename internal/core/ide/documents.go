@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ui"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/ui"
 )
 
 // The texts that are open: opening, switching, saving, closing.

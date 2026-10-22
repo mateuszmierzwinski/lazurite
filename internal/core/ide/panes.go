@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
 	"github.com/mateuszmierzwinski/lazurite/internal/debugkit/debug"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // The bottom window: what is wrong (Messages), what was printed (Output),

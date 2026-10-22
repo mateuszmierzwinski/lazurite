@@ -3,8 +3,8 @@ package ide
 import (
 	"strings"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // Completion: asking what could be typed here, offering it, and taking one.

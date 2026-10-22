@@ -3,8 +3,8 @@ package ide
 import (
 	"unicode"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ui"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/ui"
 )
 
 // Typing, the clipboard and the mouse.

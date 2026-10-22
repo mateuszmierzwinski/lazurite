@@ -1,7 +1,7 @@
 package ui
 
 import (
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // NewInput makes an input line holding a text, the caret at its end.

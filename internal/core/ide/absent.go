@@ -1,6 +1,6 @@
 package ide
 
-import "github.com/mateuszmierzwinski/lazurite/internal/core/edit"
+import "github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
 
 // NoIntel is the language intelligence of a machine that has none: it
 // knows nothing and answers nothing, and the editor works without it.

@@ -1,17 +1,18 @@
-// Package ui is what Lazurite looks like: the menu bar and its menus, the
-// framed windows, the dialogs, the editor's picture of a text and the status
-// line — each a small thing that draws itself on a screen and answers keys.
+// Package ui is a text-mode desktop, first drawn for the Lazurite IDE: the
+// menu bar and its menus, the framed windows, the dialogs, the editor's
+// picture of a text and the status line — each a small thing that draws
+// itself on a screen and answers keys.
 //
 // It is the classic text-mode desktop: a grey bar, blue windows with
 // double-line frames, grey dialogs that cast a shadow. Nothing here knows
-// what the IDE does; the widgets are told what to show and report what was
+// what the program does; the widgets are told what to show and report what was
 // chosen.
 package ui
 
 import (
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
 	"github.com/mateuszmierzwinski/lazurite/internal/langkit/lexer"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // The colours of everything, in one place.

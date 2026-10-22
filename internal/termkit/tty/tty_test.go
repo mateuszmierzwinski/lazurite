@@ -12,8 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ide"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // pty is a pseudo-terminal: the test holds the master, the adapter is
@@ -43,16 +42,18 @@ func openPty(t *testing.T) *pty {
 	p := &pty{master: master, slave: slave}
 	ws := winsize{rows: 30, cols: 100}
 	_ = ioctl(master.Fd(), syscall.TIOCSWINSZ, unsafe.Pointer(&ws))
-	go p.collect()
-	t.Cleanup(func() { slave.Close(); master.Close() })
+	go p.collect(int(master.Fd()))
+	t.Cleanup(func() { _ = slave.Close(); _ = master.Close() })
 	return p
 }
 
-// collect keeps what the program wrote to the terminal.
-func (p *pty) collect() {
+// collect keeps what the program wrote to the terminal. The descriptor is
+// taken once, by the caller: asking the file for it on every read would race
+// with the Close that ends this loop.
+func (p *pty) collect(fd int) {
 	buf := make([]byte, 4096)
 	for {
-		n, err := syscall.Read(int(p.master.Fd()), buf)
+		n, err := syscall.Read(fd, buf)
 		if n > 0 {
 			p.mu.Lock()
 			p.seen = append(p.seen, buf[:n]...)
@@ -99,7 +100,7 @@ func (p *pty) flags(t *testing.T) uint32 {
 }
 
 // next waits for the next event.
-func next(t *testing.T, terminal ide.Terminal) term.Event {
+func next(t *testing.T, terminal Port) term.Event {
 	t.Helper()
 	select {
 	case ev, ok := <-terminal.Events():

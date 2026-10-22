@@ -12,13 +12,13 @@ import (
 	"context"
 	"sync"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ui"
 	"github.com/mateuszmierzwinski/lazurite/internal/debugkit/debug"
 	"github.com/mateuszmierzwinski/lazurite/internal/langkit/lexer"
 	"github.com/mateuszmierzwinski/lazurite/internal/monokit/bazeltarget"
 	"github.com/mateuszmierzwinski/lazurite/internal/monokit/buildkind"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/ui"
 )
 
 // Brand is the product's name, here and nowhere else.

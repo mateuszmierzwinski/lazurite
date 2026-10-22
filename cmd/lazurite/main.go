@@ -17,13 +17,13 @@ import (
 	"path/filepath"
 	"syscall"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/adapters/tty"
 	"github.com/mateuszmierzwinski/lazurite/internal/compose"
 	"github.com/mateuszmierzwinski/lazurite/internal/core/ide"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/tty"
 )
 
 // version is the release; a release build sets it with -X.
-var version = "0.1.0"
+var version = "0.1.1"
 
 var (
 	goCommand    = flag.String("go", "go", "the Go tool to build, test and run with")

@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 func TestTheProjectTreeIsShownBesideTheTextAndHasTheKeyboardWhenNothingIsOpen(t *testing.T) {

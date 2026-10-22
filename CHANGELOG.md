@@ -5,6 +5,15 @@ All notable changes to Lazurite are recorded here. The format follows
 in the `%changelog` of `lazurite.spec`, which is what `rpm -q --changelog` and
 `dnf` show.
 
+## [0.1.1] — 2026-10-22
+
+### Changed
+
+- **No change in behaviour.** The terminal, the editor and the text-mode
+  widgets moved into a shared library of their own, so other programs can be
+  built on them; Lazurite looks and works exactly as in 0.1.0. Nothing to do
+  on upgrade.
+
 ## [0.1.0] — 2026-10-02
 
 First release.

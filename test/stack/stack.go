@@ -18,7 +18,7 @@ import (
 
 	"github.com/mateuszmierzwinski/lazurite/internal/compose"
 	"github.com/mateuszmierzwinski/lazurite/internal/core/ide"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // Terminal is a terminal nobody sits at: it has a size, keeps what was

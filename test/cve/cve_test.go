@@ -16,7 +16,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 	"github.com/mateuszmierzwinski/lazurite/test/stack"
 )
 

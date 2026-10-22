@@ -14,8 +14,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/ide"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // Terminal is a terminal taken over.
@@ -39,7 +38,7 @@ type Terminal struct {
 // reporting. Close gives it back. It returns the port and the function
 // that gives the terminal back, which must be called before the process
 // ends or the user's shell is left in raw mode.
-func Open(in, out *os.File) (ide.Terminal, func(), error) {
+func Open(in, out *os.File) (Port, func(), error) {
 	t := &Terminal{
 		in: in, out: out,
 		// 64: a paste or a burst of mouse movement arrives faster than a
@@ -117,7 +116,7 @@ func (t *Terminal) Size() (int, int) {
 // Output is where the screen should be drawn: standard output when it is
 // the terminal, and otherwise the terminal itself.
 //
-// A program that starts the IDE may have put a pipe in place of its
+// A program that starts this one may have put a pipe in place of its
 // output, to keep a copy of what it prints. Frames drawn into that pipe
 // would arrive late and fill the copy with screen-drawing; and the pipe
 // cannot say how big the terminal is. The second answer is the function

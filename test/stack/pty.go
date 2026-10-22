@@ -54,17 +54,18 @@ func OpenPty(t *testing.T, cols, rows uint16) *Pty {
 	}
 	_ = control(master, syscall.TIOCSWINSZ, unsafe.Pointer(&winsize{rows: rows, cols: cols}))
 	p := &Pty{Master: master, Slave: slave}
-	go p.collect()
-	t.Cleanup(func() { slave.Close(); master.Close() })
+	go p.collect(int(master.Fd()))
+	t.Cleanup(func() { _ = slave.Close(); _ = master.Close() })
 	return p
 }
 
 // collect keeps what is written to the terminal. It ends when the
-// terminal is closed.
-func (p *Pty) collect() {
+// terminal is closed. The descriptor is taken once, by the caller: asking the
+// file for it on every read would race with the Close that ends this loop.
+func (p *Pty) collect(fd int) {
 	buf := make([]byte, 8192)
 	for {
-		n, err := syscall.Read(int(p.Master.Fd()), buf)
+		n, err := syscall.Read(fd, buf)
 		if n > 0 {
 			p.mu.Lock()
 			p.seen = append(p.seen, buf[:n]...)

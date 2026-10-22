@@ -14,10 +14,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
 	"github.com/mateuszmierzwinski/lazurite/internal/core/ide"
 	"github.com/mateuszmierzwinski/lazurite/internal/langkit/language"
 	"github.com/mateuszmierzwinski/lazurite/internal/langkit/lsp"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
 )
 
 // Server is a running language server and the files it has been told of.

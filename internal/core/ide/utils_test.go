@@ -4,9 +4,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
 	"github.com/mateuszmierzwinski/lazurite/internal/debugkit/debug"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 func TestDisplayNameIsRelativeInsideTheProjectAndWholeOutside(t *testing.T) {

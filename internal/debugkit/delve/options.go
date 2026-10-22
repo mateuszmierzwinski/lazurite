@@ -3,6 +3,8 @@ package delve
 import (
 	"bufio"
 	"io"
+	"os"
+	"syscall"
 
 	"github.com/go-delve/delve/pkg/proc"
 	"github.com/go-delve/delve/service/debugger"
@@ -57,7 +59,7 @@ func (c *Client) pipe() proc.OutputRedirect {
 	if err != nil {
 		return proc.OutputRedirect{}
 	}
-	c.streams = append(c.streams, reader)
+	c.streams = append(c.streams, redirect.Path)
 	go c.forward(reader)
 	return redirect
 }
@@ -69,11 +71,13 @@ const maxOutputLine = 64 << 10
 // forward reads one stream until the program closes it and hands each line
 // to the watcher.
 //
-// It runs on a goroutine of its own, owned by the session: it ends when the
-// program exits (the stream ends) or when the session's streams are closed
-// (closeStreams), whichever is first.
+// It runs on a goroutine of its own, owned by the session, and it is the ONLY
+// thing that ever touches the reader: Delve's reader opens its pipe lazily on
+// the first Read and is not safe to close from another goroutine. It ends when
+// the stream does — when the program exits, or when closeStreams hangs the
+// pipe up from the writing side, whichever is first.
 func (c *Client) forward(reader io.ReadCloser) {
-	defer reader.Close()
+	defer func() { _ = reader.Close() }()
 	lines := bufio.NewReaderSize(reader, maxOutputLine)
 	for {
 		line, err := lines.ReadString('\n')
@@ -86,11 +90,27 @@ func (c *Client) forward(reader io.ReadCloser) {
 	}
 }
 
-// closeStreams ends the forwarding of a session that is over. Called with
-// the lock held.
+// closeStreams ends the forwarding of a session that is over, by hanging up
+// each pipe rather than by closing a reader another goroutine is using. Called
+// with the lock held.
 func (c *Client) closeStreams() {
-	for _, stream := range c.streams {
-		_ = stream.Close()
+	for _, path := range c.streams {
+		hangUp(path)
 	}
 	c.streams = nil
+}
+
+// hangUp opens a pipe for writing and closes it again, which gives its reader
+// an end of file — also a reader still waiting in open for a program that
+// never got as far as writing. A pipe that is already gone (its forwarder
+// finished and removed it) has nobody left to tell.
+func hangUp(path string) {
+	if path == "" {
+		return
+	}
+	writer, err := os.OpenFile(path, os.O_WRONLY|syscall.O_NONBLOCK, 0) // #nosec G304 -- the session's own pipe, named by Delve's Redirector
+	if err != nil {
+		return
+	}
+	_ = writer.Close()
 }

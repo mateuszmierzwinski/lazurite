@@ -3,9 +3,9 @@ package ui
 import (
 	"unicode/utf8"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
 	"github.com/mateuszmierzwinski/lazurite/internal/langkit/lexer"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // kindStyles is the colour of each kind of syntax.

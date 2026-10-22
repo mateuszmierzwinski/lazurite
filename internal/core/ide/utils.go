@@ -7,7 +7,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
 )
 
 // displayName is a path as it is shown: relative to the project when it is

@@ -3,7 +3,7 @@ package ui
 import (
 	"unicode"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/term"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/term"
 )
 
 // barStart is the column the first menu title is drawn at.

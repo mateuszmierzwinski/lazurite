@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mateuszmierzwinski/lazurite/internal/core/edit"
 	"github.com/mateuszmierzwinski/lazurite/internal/debugkit/debug"
+	"github.com/mateuszmierzwinski/lazurite/internal/termkit/edit"
 )
 
 // Debugging: breakpoints, starting and stepping a program, and showing
